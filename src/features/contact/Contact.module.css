@@ -1,0 +1,193 @@
+.footer {
+    background-color: var(--bg-main);
+    padding: var(--space-16) var(--space-8) var(--space-8);
+    position: relative;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="light"] .footer {
+    border-color: rgba(0, 0, 0, 0.05);
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-12);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    /* Changed to accommodate grouped links + CTA */
+    gap: var(--space-16);
+}
+
+.linksGroup {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* Restore 50/50 split within the left half */
+    gap: var(--space-8);
+    width: 100%;
+    /* Ensure it fills the grid cell */
+}
+
+@media (max-width: 1024px) {
+    .grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-8);
+    }
+
+    .linksGroup {
+        /* On tablet/mobile, we might want to keep the grid or switch spacing */
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-4);
+    }
+}
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-8);
+    }
+
+    .footer {
+        padding: var(--space-8) var(--space-4) var(--space-4);
+    }
+
+    .linksGroup {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        /* 2 Column Grid for Links */
+        gap: var(--space-4);
+    }
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.ctaColumn {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1rem;
+}
+
+@media (max-width: 768px) {
+    .ctaColumn {
+        align-items: flex-start;
+        margin-top: var(--space-4);
+    }
+}
+
+.colTitle {
+    font-family: var(--font-code);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+.link {
+    font-family: var(--font-hero);
+    font-size: 1.5rem;
+    color: var(--text-main);
+    text-decoration: none;
+    transition: color 0.3s, transform 0.3s;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    text-align: left;
+    will-change: transform;
+    backface-visibility: hidden;
+}
+
+[data-theme="light"] .link {
+    color: #000;
+}
+
+.link:hover {
+    color: var(--accent);
+    transform: translateX(10px);
+}
+
+.bigCta {
+    font-family: var(--font-hero);
+    font-size: 8rem;
+    line-height: 0.8;
+    color: var(--text-main);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    will-change: transform;
+    backface-visibility: hidden;
+}
+
+[data-theme="light"] .bigCta {
+    color: #000;
+}
+
+.bigCta:hover {
+    color: var(--accent);
+    transform: scale(1.02);
+}
+
+@media (max-width: 1024px) {
+    .bigCta {
+        font-size: 5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .bigCta {
+        font-size: 12vw;
+        /* Responsive scaling */
+        line-height: 1;
+    }
+
+    .link {
+        font-size: 1.2rem;
+    }
+}
+
+.email {
+    font-family: var(--font-code);
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-top: var(--space-4);
+}
+
+.bottomBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-top: var(--space-8);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="light"] .bottomBar {
+    border-color: rgba(0, 0, 0, 0.05);
+}
+
+@media (max-width: 768px) {
+    .bottomBar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-4);
+    }
+}
+
+.copyright,
+.location {
+    font-family: var(--font-code);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}

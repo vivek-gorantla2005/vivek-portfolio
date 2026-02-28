@@ -1,0 +1,439 @@
+.section {
+    padding: var(--space-32) 0;
+    background-color: var(--bg-main);
+    overflow: hidden;
+    position: relative;
+}
+
+.header {
+    padding: 0 5vw var(--space-16);
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+    /* Ensure container takes width */
+}
+
+/* ... existing code ... */
+
+.headerDecoration {
+    height: 1px;
+    flex-grow: 1;
+    background: rgba(255, 255, 255, 0.2);
+    /* Increased opacity */
+    display: block;
+    /* Ensure it renders */
+    min-width: 50px;
+    /* Force minimum width */
+}
+
+.sectionHeading {
+    font-family: var(--font-hero);
+    font-size: 6rem;
+    line-height: 0.9;
+    color: var(--text-main);
+    text-transform: uppercase;
+    opacity: 0.1;
+}
+
+[data-theme="light"] .sectionHeading {
+    opacity: 1;
+    color: transparent;
+    -webkit-text-stroke: 3px var(--accent);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.marqueeRow {
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    user-select: none;
+    width: 100%;
+    /* Fade out the edges of the marquee */
+    mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+}
+
+.track {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    /* Slower scrolling */
+    animation: scroll 60s linear infinite;
+    animation-direction: normal;
+    will-change: transform;
+    /* Hint to browser */
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+.marqueeRow[style*="--direction: -1"] .track {
+    animation-direction: reverse;
+}
+
+.marqueeRow:hover .track {
+    animation-play-state: paused;
+}
+
+.skillItem {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    font-family: var(--font-hero);
+    font-size: 7rem;
+    line-height: 0.9;
+    white-space: nowrap;
+    margin-right: var(--space-8);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: default;
+}
+
+.skillIcon {
+    height: 5rem;
+    width: 5rem;
+    object-fit: contain;
+    filter: grayscale(100%) opacity(0.3);
+    transition: filter 0.4s ease, transform 0.4s ease;
+}
+
+[data-theme="light"] .skillIcon {
+    filter: grayscale(100%) opacity(0.6);
+}
+
+.skillText {
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(255, 255, 255, 0.15);
+    transition: color 0.4s ease, -webkit-text-stroke 0.4s ease, text-shadow 0.4s ease;
+}
+
+[data-theme="light"] .skillText {
+    -webkit-text-stroke: 2px rgba(0, 0, 0, 0.85);
+}
+
+.skillItem:hover {
+    transform: scale(1.05);
+}
+
+.skillItem:hover .skillIcon {
+    filter: grayscale(0%) opacity(1);
+    transform: rotate(-10deg) scale(1.1);
+}
+
+.skillItem:hover .skillText {
+    color: var(--text-main);
+    -webkit-text-stroke: 0px transparent;
+    text-shadow: 0 0 40px rgba(204, 255, 0, 0.4);
+}
+
+[data-theme="light"] .skillItem:hover .skillText {
+    color: var(--text-main);
+    text-shadow: 0 0 30px rgba(255, 77, 0, 0.3);
+}
+
+.separator {
+    color: var(--accent);
+    font-size: 3rem;
+    vertical-align: middle;
+    opacity: 0.3;
+    margin-left: var(--space-8);
+}
+
+@keyframes scroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+@media (max-width: 768px) {
+    .skillItem {
+        font-size: 4rem;
+        gap: 1rem;
+    }
+
+    .skillIcon {
+        height: 3rem;
+        width: 3rem;
+    }
+
+    .skillText {
+        -webkit-text-stroke: 1px rgba(255, 255, 255, 0.15);
+    }
+
+    [data-theme="light"] .skillText {
+        -webkit-text-stroke: 1px rgba(0, 0, 0, 0.85);
+    }
+
+    .separator {
+        font-size: 2rem;
+    }
+
+    .sectionHeading {
+        font-size: 3rem;
+    }
+
+    .header {
+        padding: 0 var(--space-4) var(--space-8);
+    }
+
+    .section {
+        padding: var(--space-16) 0;
+    }
+}
+
+/* ════════════════════════════════════
+   VIEW ALL MODAL & BUTTON
+════════════════════════════════════ */
+
+.viewAllBtn {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.5rem;
+    background: rgba(204, 255, 0, 0.05);
+    /* very soft accent tint */
+    border: 1px solid rgba(204, 255, 0, 0.2);
+    border-radius: 100px;
+    color: var(--text-main);
+    font-family: var(--font-code);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(8px);
+}
+
+[data-theme="light"] .viewAllBtn {
+    background: rgba(255, 77, 0, 0.05);
+    border-color: rgba(255, 77, 0, 0.2);
+}
+
+.viewAllBtn:hover {
+    background: var(--accent);
+    color: var(--bg-main);
+    border-color: var(--accent);
+    box-shadow: 0 0 20px rgba(204, 255, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+[data-theme="light"] .viewAllBtn:hover {
+    box-shadow: 0 0 20px rgba(255, 77, 0, 0.2);
+}
+
+/* ── Modal Overlay ── */
+.modalOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+[data-theme="light"] .modalOverlay {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+/* ── Modal Box ── */
+.modalContent {
+    background: var(--bg-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    border-radius: 16px;
+    width: 100%;
+    max-width: 900px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+[data-theme="light"] .modalContent {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+}
+
+/* Custom Scrollbar for Modal */
+.modalContent::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modalContent::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.modalContent::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+[data-theme="light"] .modalContent::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.closeBtn {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-muted);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+[data-theme="light"] .closeBtn {
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.closeBtn:hover {
+    background: var(--text-main);
+    color: var(--bg-main);
+    transform: rotate(90deg);
+}
+
+/* ── Modal Typography ── */
+.modalHeader {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-width: 80%;
+}
+
+.modalHeading {
+    font-family: var(--font-hero);
+    font-size: 3.5rem;
+    line-height: 1;
+    color: var(--text-main);
+    text-transform: uppercase;
+}
+
+.modalSubheading {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--text-muted);
+}
+
+/* ── Modal Grid & Groups ── */
+.modalGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 3rem;
+}
+
+.skillGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.groupTitle {
+    font-family: var(--font-code);
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    text-transform: uppercase;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="light"] .groupTitle {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.groupItems {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.modalSkillItem {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.6rem 1rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--text-main);
+    transition: all 0.2s ease;
+    cursor: default;
+}
+
+[data-theme="light"] .modalSkillItem {
+    background: rgba(0, 0, 0, 0.02);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.modalSkillItem:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateX(4px);
+}
+
+[data-theme="light"] .modalSkillItem:hover {
+    background: rgba(0, 0, 0, 0.06);
+    border-color: rgba(0, 0, 0, 0.15);
+}
+
+.modalSkillIcon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+.modalSkillDot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    margin: 0 7px;
+}
+
+@media (max-width: 768px) {
+    .modalOverlay {
+        padding: 1rem;
+    }
+
+    .modalContent {
+        padding: 2rem 1.5rem;
+        max-height: 95vh;
+    }
+
+    .modalHeading {
+        font-size: 2.5rem;
+    }
+
+    .viewAllBtn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.75rem;
+    }
+
+    .viewAllBtn span {
+        display: none;
+    }
+}

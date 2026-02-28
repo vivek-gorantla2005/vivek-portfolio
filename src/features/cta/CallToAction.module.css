@@ -1,0 +1,107 @@
+.section {
+    min-height: 50vh;
+    /* Reduced height */
+    width: 100%;
+    background-color: var(--bg-main);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: var(--space-16) 5vw var(--space-8);
+    /* Reduced padding, little bottom padding */
+    margin-bottom: 0;
+}
+
+.container {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Centering text */
+    text-align: center;
+    width: 100%;
+    max-width: 1400px;
+}
+
+.headline {
+    font-family: var(--font-hero);
+    font-size: clamp(3rem, 7vw, 9rem);
+    /* Adjusted font size for 3 lines */
+    line-height: 1.1;
+    color: var(--text-main);
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    margin-bottom: 0;
+    /* Remove bottom indentation */
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Removed avatar classes */
+
+.accent {
+    color: var(--text-main);
+    opacity: 0.5;
+    transition: opacity 0.3s;
+}
+
+.headline:hover .accent {
+    opacity: 1;
+    color: var(--accent);
+}
+
+/* Removed ctaWrapper and ctaButton classes */
+
+.orb {
+    position: absolute;
+    right: -10vw;
+    top: 50%;
+    transform: translate3d(0, -50%, 0);
+    /* Use translate3d for GPU */
+    width: 40vw;
+    height: 40vw;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+    filter: blur(80px);
+    opacity: 0.2;
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: screen;
+    will-change: transform;
+    /* Hint to browser */
+    backface-visibility: hidden;
+}
+
+@media (max-width: 768px) {
+    .section {
+        min-height: 40vh;
+        padding: var(--space-8) var(--space-4);
+    }
+
+    .container {
+        max-width: 100%;
+        padding: 0 var(--space-2);
+    }
+
+    .headline {
+        font-size: clamp(1.75rem, 8vw, 3.5rem);
+        gap: var(--space-2);
+        line-height: 1.2;
+        max-width: 100%;
+    }
+
+    .line {
+        max-width: 100%;
+        word-wrap: break-word;
+    }
+}
