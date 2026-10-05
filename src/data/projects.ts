@@ -55,6 +55,6 @@ export const projects: Project[] = [
             'Fully autonomous AI system that discovers, contacts, qualifies, scores, and follows up with leads without human involvement. Implements multi-agent orchestration for discovery, multilingual voice/email outreach, intent detection, real-time scoring, automated follow-ups, and CRM updates.',
         link: '',
         github: 'https://github.com/vivek-gorantla2005/agentflow-leads',
-        video: 'https://res.cloudinary.com/dx1rpbut6/video/upload/v1772266711/hackathon_project_1_n2wzw1.mp44'
+        video: 'https://res.cloudinary.com/dx1rpbut6/video/upload/v1772266711/hackathon_project_1_n2wzw1.mp4'
     }
 ];
