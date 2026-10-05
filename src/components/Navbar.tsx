@@ -58,7 +58,7 @@ export const Navbar = () => {
                                 className={styles.resumeBtn}
                                 onClick={() =>
                                     window.open(
-                                        'https://drive.google.com/file/d/1wTplRI73kMZux65y0pIuTXkp8i3y2A3b/view?usp=sharing',
+                                        'https://drive.google.com/file/d/1KusrVMDcTKEPrDueyIPtS8e85oKxpmMB/view?usp=sharing',
                                         '_blank',
                                         'noopener,noreferrer'
                                     )
