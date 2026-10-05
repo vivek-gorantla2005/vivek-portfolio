@@ -56,21 +56,23 @@ export const projects: Project[] = [
         link: '',
         github: 'https://github.com/vivek-gorantla2005/agentflow-leads',
         video: 'https://res.cloudinary.com/dx1rpbut6/video/upload/v1772266711/hackathon_project_1_n2wzw1.mp4'
-    },{
-        id : 'bazaar',
-        title: 'Hyper local agentic commerce for local business',
-        stack:[
-            'Node.js',
-            'Express.js',
-            'Next.js',
-            'azure openai',
-            'kafka',
-            'redis',
-            'postgresql'
-        ],
-        description:
-            'Bazaar is an AI-powered retail management platform designed to help local merchants digitize and automate their businesses. It uses specialized AI agents to handle inventory, cataloging, procurement, sales growth, and customer discovery through voice, text, images, and CSV data, with secure money-action governance, policy controls, explainability, and audit trails.',
-        github:'https://github.com/vivek-gorantla/Bazaar',
-        video:'https://youtu.be/iLphdT9dadM'
-    }
+    },
+    {
+    id: 'bazaar',
+    title: 'Bazaar – Hyperlocal Agentic Commerce',
+    stack: [
+        'Node.js',
+        'Express.js',
+        'Next.js',
+        'Azure OpenAI',
+        'Kafka',
+        'Redis',
+        'PostgreSQL'
+    ],
+    description:
+        'AI-powered hyperlocal commerce platform that helps local merchants digitize and automate operations using specialized AI agents. Features multimodal inventory management, automated cataloging, intelligent procurement, personalized product discovery, and secure agent-driven transactions with policy enforcement and audit trails.',
+    link: '',
+    github: 'https://github.com/vivek-gorantla/Bazaar',
+    video: 'https://youtu.be/iLphdT9dadM'
+}
 ];
